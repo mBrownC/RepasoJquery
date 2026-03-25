@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Repaso JS</title>
+        <link rel="stylesheet" href="jquery_repaso.css">
+    </head>
+    <body>
+        <div class="progress-bar" id="progressBar"></div>
+
+        <div class="presentation">
+
+            <!-- SLIDE 1: PORTADA -->
+            <div class="slide active">
+                <div class="cover-slide">
+                    <div class="logo-container">
+                        <img src="/sustantiva.png" alt="Bootcamp Academy">
+                    </div>
+                    <h1>AJAX y jQuery</h1>
+                    <h2 style="color: #f78a42;">Manipulación del DOM y Eventos
+                        Interactivos</h2>
+                    <div class="highlight-box"
+                        style="max-width: 800px; margin-top: 30px;">
+                        <p
+                            style="font-size: 20px; margin-bottom: 15px; color: white;">
+                            <span
+                                style="color: #f78a42; font-weight: 600;">AJAX</span>
+                            •
+                            <span
+                                style="color: #f78a42; font-weight: 600;">jQuery</span>
+                            •
+                            <span
+                                style="color: #f78a42; font-weight: 600;">Selectores</span>
+                            •
+                            <span
+                                style="color: #f78a42; font-weight: 600;">Eventos</span>
+                            •
+                            <span
+                                style="color: #f78a42; font-weight: 600;">DOM</span>
+                        </p>
+                        <p style="color: white;">Aprende a crear aplicaciones
+                            web interactivas con jQuery, manipular el DOM
+                            dinámicamente y gestionar eventos de forma
+                            profesional</p>
+                    </div>
+                    <div style="margin-top: 40px;">
+                        <span class="badge">Asíncrono</span>
+                        <span class="badge">Eventos</span>
+                        <span class="badge">Delegación</span>
+                        <span class="badge">Interactividad</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 2: ¿QUÉ ES AJAX? -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Tema 1</div>
+                    <h1>¿Qué es AJAX?</h1>
+                </div>
+                <div class="content">
+                    <div class="highlight-box">
+                        <h3 style="color: white; margin-top: 0;">AJAX =
+                            Asynchronous JavaScript And XML</h3>
+                        <p style="color: white;">Técnica de desarrollo web para
+                            crear aplicaciones interactivas que se comunican con
+                            el servidor <strong>sin recargar la página
+                                completa</strong>.</p>
+                    </div>
+
+                    <h2>Concepto Principal</h2>
+                    <p>AJAX permite que las páginas web se actualicen de forma
+                        <span class="emphasis">asincrónica</span>,
+                        intercambiando datos con el servidor en segundo
+                        plano.</p>
+
+                    <h3>¿Por qué es importante?</h3>
+                    <ul>
+                        <li><strong>Experiencia de usuario mejorada:</strong>
+                            Las páginas responden más rápido</li>
+                        <li><strong>Ahorro de ancho de banda:</strong> Solo se
+                            transfieren los datos necesarios</li>
+                        <li><strong>Interactividad:</strong> Actualizaciones en
+                            tiempo real sin recargar</li>
+                        <li><strong>Aplicaciones modernas:</strong> Gmail,
+                            Facebook, Twitter usan AJAX constantemente</li>
+                    </ul>
+
+                    <h3>Ejemplo del mundo real</h3>
+                    <div class="note-box">
+                        <strong>🔍 Buscador de Google:</strong> Cuando escribes
+                        en el buscador, ves sugerencias automáticas. Esas
+                        sugerencias se cargan usando AJAX, sin recargar toda la
+                        página.
+                    </div>
+
+                    <div class="two-columns">
+                        <div class="card">
+                            <h4>❌ Sin AJAX (Antiguo)</h4>
+                            <p>1. Usuario hace click en botón</p>
+                            <p>2. Página completa se recarga</p>
+                            <p>3. Usuario espera...</p>
+                            <p>4. Nueva página se muestra</p>
+                            <p style="color: #dc3545; font-weight: 600;">⏱️
+                                Lento y molesto</p>
+                        </div>
+                        <div class="card">
+                            <h4>✅ Con AJAX (Moderno)</h4>
+                            <p>1. Usuario hace click en botón</p>
+                            <p>2. Petición al servidor (invisible)</p>
+                            <p>3. Datos regresan</p>
+                            <p>4. Solo se actualiza una parte</p>
+                            <p style="color: #198754; font-weight: 600;">⚡
+                                Rápido y fluido</p>
+                        </div>
+                    </div>
+
+                    <h3>¿Cómo funciona AJAX?</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Ejemplo básico de AJAX con JavaScript puro</span>
+<span class="code-selector">fetch</span>(<span class="code-value">'https://api.ejemplo.com/datos'</span>)
+    .<span class="code-property">then</span>(<span class="code-selector">response</span> => response.<span class="code-property">json</span>())
+    .<span class="code-property">then</span>(<span class="code-selector">datos</span> => {
+        <span class="code-comment">// Actualizar solo una parte de la página</span>
+        <span class="code-selector">document</span>.<span class="code-property">getElementById</span>(<span class="code-value">'resultado'</span>).<span class="code-property">innerHTML</span> = datos;
+    });</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: AJAX EN LA PRÁCTICA -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Tema 1</div>
+                    <h1>AJAX en la Práctica</h1>
+                </div>
+                <div class="content">
+                    <h2>Ejemplos cotidianos de AJAX</h2>
+
+                    <div class="grid-3">
+                        <div class="card">
+                            <h4>📧 Gmail</h4>
+                            <p>Carga nuevos correos sin refrescar</p>
+                        </div>
+                        <div class="card">
+                            <h4>💬 Facebook</h4>
+                            <p>Actualiza el feed automáticamente</p>
+                        </div>
+                        <div class="card">
+                            <h4>🛒 Carrito de Compras</h4>
+                            <p>Agrega productos instantáneamente</p>
+                        </div>
+                        <div class="card">
+                            <h4>🔍 Autocompletado</h4>
+                            <p>Sugerencias mientras escribes</p>
+                        </div>
+                        <div class="card">
+                            <h4>💰 Precios en tiempo real</h4>
+                            <p>Actualización de stocks y precios</p>
+                        </div>
+                        <div class="card">
+                            <h4>📊 Dashboards</h4>
+                            <p>Gráficos que se actualizan solos</p>
+                        </div>
+                    </div>
+
+                    <h3>¿Qué tecnologías usa AJAX?</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tecnología</th>
+                                <th>Función</th>
+                                <th>Ejemplo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>JavaScript</strong></td>
+                                <td>Motor principal de AJAX</td>
+                                <td>fetch(), XMLHttpRequest</td>
+                            </tr>
+                            <tr>
+                                <td><strong>JSON</strong></td>
+                                <td>Formato de datos moderno</td>
+                                <td>{ "nombre": "Miguel", "rol": "Instructor"
+                                    }</td>
+                            </tr>
+                            <tr>
+                                <td><strong>XML</strong></td>
+                                <td>Formato de datos antiguo</td>
+                                <td>&lt;usuario&gt;&lt;nombre&gt;Miguel&lt;/nombre&gt;&lt;/usuario&gt;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DOM</strong></td>
+                                <td>Actualiza la página</td>
+                                <td>innerHTML, createElement</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>AJAX con jQuery</h3>
+                    <p>jQuery simplifica enormemente el uso de AJAX. Por eso se
+                        menciona tanto en el contexto de aplicaciones web
+                        modernas.</p>
+
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// AJAX con jQuery (mucho más simple)</span>
+<span class="code-selector">$.ajax</span>({
+    <span class="code-property">url</span>: <span class="code-value">'https://api.ejemplo.com/usuarios'</span>,
+    <span class="code-property">method</span>: <span class="code-value">'GET'</span>,
+    <span class="code-property">success</span>: <span class="code-selector">function</span>(<span class="code-selector">datos</span>) {
+        <span class="code-comment">// Hacer algo con los datos</span>
+        <span class="code-selector">console</span>.<span class="code-property">log</span>(datos);
+    }
+});</code></pre>
+                    </div>
+
+                    <div class="success-box">
+                        <strong>💡 Importante:</strong> Aunque AJAX tiene "XML"
+                        en su nombre, hoy en día se usa principalmente
+                        <strong>JSON</strong> como formato de datos por ser más
+                        ligero y fácil de usar.
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: ¿QUÉ ES JQUERY? -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Tema 2</div>
+                    <h1>¿Qué es jQuery?</h1>
+                </div>
+                <div class="content">
+                    <div class="highlight-box">
+                        <h3 style="color: white; margin-top: 0;">jQuery:
+                            "Write less, do more"</h3>
+                        <p style="color: white;">Biblioteca de JavaScript que
+                            simplifica la manipulación del DOM, eventos,
+                            animaciones y AJAX.</p>
+                    </div>
+
+                    <h2>Principales ventajas de jQuery</h2>
+                    <div class="grid-3">
+                        <div class="card">
+                            <h4>📝 Sintaxis Simple</h4>
+                            <p>Reduce código dramáticamente</p>
+                        </div>
+                        <div class="card">
+                            <h4>🌐 Cross-Browser</h4>
+                            <p>Funciona en todos los navegadores</p>
+                        </div>
+                        <div class="card">
+                            <h4>🎯 Selectores CSS</h4>
+                            <p>Selecciona elementos fácilmente</p>
+                        </div>
+                        <div class="card">
+                            <h4>🎬 Efectos/Animaciones</h4>
+                            <p>Integrados en la biblioteca</p>
+                        </div>
+                        <div class="card">
+                            <h4>📡 AJAX Simplificado</h4>
+                            <p>Peticiones HTTP fáciles</p>
+                        </div>
+                        <div class="card">
+                            <h4>🔌 Plugins</h4>
+                            <p>Miles de extensiones disponibles</p>
+                        </div>
+                    </div>
+
+                    <h3>Comparación: JavaScript vs jQuery</h3>
+                    <div class="two-columns">
+                        <div>
+                            <h4>JavaScript Puro</h4>
+                            <div class="code-block">
+                                <pre><code class="code-line"><span class="code-comment">// Seleccionar elementos</span>
+<span class="code-selector">document</span>.<span class="code-property">getElementById</span>(<span class="code-value">'miDiv'</span>);
+<span class="code-selector">document</span>.<span class="code-property">querySelectorAll</span>(<span class="code-value">'.miClase'</span>);
+
+<span class="code-comment">// Cambiar contenido</span>
+<span class="code-selector">elem</span>.<span class="code-property">innerHTML</span> = <span class="code-value">'Texto'</span>;
+
+<span class="code-comment">// Agregar evento</span>
+<span class="code-selector">elem</span>.<span class="code-property">addEventListener</span>(<span class="code-value">'click'</span>, <span class="code-selector">fn</span>);</code></pre>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>jQuery</h4>
+                            <div class="code-block">
+                                <pre><code class="code-line"><span class="code-comment">// Seleccionar elementos</span>
+<span class="code-selector">$</span>(<span class="code-value">'#miDiv'</span>);
+<span class="code-selector">$</span>(<span class="code-value">'.miClase'</span>);
+
+<span class="code-comment">// Cambiar contenido</span>
+<span class="code-selector">$</span>(<span class="code-value">'#miDiv'</span>).<span class="code-property">html</span>(<span class="code-value">'Texto'</span>);
+
+<span class="code-comment">// Agregar evento</span>
+<span class="code-selector">$</span>(<span class="code-value">'#miDiv'</span>).<span class="code-property">on</span>(<span class="code-value">'click'</span>, <span class="code-selector">fn</span>);</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>El símbolo $ (dólar)</h3>
+                    <div class="note-box">
+                        <p><strong>$</strong> es simplemente un alias de
+                            <code>jQuery</code>. Son exactamente lo mismo:</p>
+                        <p><code>$('p')</code> = <code>jQuery('p')</code></p>
+                    </div>
+
+                    <h3>¿Cuándo usar jQuery?</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>✅ Usar jQuery</th>
+                                <th>❌ No usar jQuery</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Proyectos legacy existentes</td>
+                                <td>Aplicaciones React/Vue/Angular nuevas</td>
+                            </tr>
+                            <tr>
+                                <td>Soporte a navegadores antiguos (IE)</td>
+                                <td>Solo navegadores modernos (ES6+)</td>
+                            </tr>
+                            <tr>
+                                <td>Prototipado rápido</td>
+                                <td>Proyectos que requieren máximo
+                                    rendimiento</td>
+                            </tr>
+                            <tr>
+                                <td>Uso de plugins jQuery específicos</td>
+                                <td>Cuando quieres minimizar dependencias</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="warning-box">
+                        <strong>⚠️ Estado actual (2025):</strong> jQuery sigue
+                        siendo usado en millones de sitios web, pero para
+                        proyectos nuevos se recomienda JavaScript moderno (ES6+)
+                        o frameworks como React, Vue o Angular.
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 5: INSTALACIÓN DE JQUERY -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Tema 2</div>
+                    <h1>Instalación de jQuery</h1>
+                </div>
+                <div class="content">
+                    <h2>Opción 1: CDN (Recomendado para aprender)</h2>
+                    <p>La forma más rápida y sencilla. Solo agrega esta línea
+                        antes del cierre de <code>&lt;/body&gt;</code>:</p>
+
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-tag">&lt;script</span>
+    <span class="code-attr">src</span>=<span class="code-value">"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"</span>
+    <span class="code-attr">integrity</span>=<span class="code-value">"sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="</span>
+    <span class="code-attr">crossorigin</span>=<span class="code-value">"anonymous"</span>
+    <span class="code-attr">referrerpolicy</span>=<span class="code-value">"no-referrer"</span><span class="code-tag">&gt;&lt;/script&gt;</span></code></pre>
+                    </div>
+
+                    <div class="success-box">
+                        <h4>✅ Ventajas del CDN:</h4>
+                        <ul>
+                            <li>No necesitas descargar archivos</li>
+                            <li>Actualizaciones automáticas de seguridad</li>
+                            <li>Caché del navegador (probablemente ya lo tiene
+                                descargado)</li>
+                            <li>Rápido de implementar</li>
+                        </ul>
+                    </div>
+
+                    <h3>Opción 2: Descarga Local</h3>
+                    <p>Si necesitas trabajar sin internet o tener control
+                        total:</p>
+
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// 1. Descargar desde https://jquery.com/download/</span>
+<span class="code-comment">// 2. Guardar en tu proyecto:</span>
+proyecto/
+├── index.html
+└── assets/
+    └── js/
+        └── jquery.min.js
+
+<span class="code-comment">// 3. Incluir en HTML:</span>
+<span class="code-tag">&lt;script</span> <span class="code-attr">src</span>=<span class="code-value">"./assets/js/jquery.min.js"</span><span class="code-tag">&gt;&lt;/script&gt;</span></code></pre>
+                    </div>
+
+                    <h3>Estructura HTML completa</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html</span> <span class="code-attr">lang</span>=<span class="code-value">"es"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;head&gt;</span>
+    <span class="code-tag">&lt;meta</span> <span class="code-attr">charset</span>=<span class="code-value">"UTF-8"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;title&gt;</span>Mi proyecto con jQuery<span class="code-tag">&lt;/title&gt;</span>
+<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body&gt;</span>
+
+    <span class="code-tag">&lt;p&gt;</span>Hola Mundo<span class="code-tag">&lt;/p&gt;</span>
+
+    <span class="code-comment">&lt;!-- jQuery PRIMERO --&gt;</span>
+    <span class="code-tag">&lt;script</span> <span class="code-attr">src</span>=<span class="code-value">"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"</span><span class="code-tag">&gt;&lt;/script&gt;</span>
+    
+    <span class="code-comment">&lt;!-- Tu código DESPUÉS --&gt;</span>
+    <span class="code-tag">&lt;script&gt;</span>
+        <span class="code-selector">$</span>(<span class="code-selector">document</span>).<span class="code-property">ready</span>(<span class="code-selector">function</span>() {
+            <span class="code-selector">console</span>.<span class="code-property">log</span>(<span class="code-value">'jQuery funciona!'</span>);
+        });
+    <span class="code-tag">&lt;/script&gt;</span>
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <strong>⚠️ ORDEN IMPORTA:</strong> jQuery debe cargarse
+                        ANTES de tu código que lo usa. Si lo pones después,
+                        verás errores como "$ is not defined".
+                    </div>
+
+                    <h3>Verificar que jQuery funciona</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Abre la consola del navegador (F12) y escribe:</span>
+<span class="code-selector">$</span>
+
+<span class="code-comment">// Si ves la función jQuery, ¡funciona! ✅</span>
+<span class="code-comment">// Si ves "$ is not defined", algo está mal ❌</span></code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 6: SELECTORES JQUERY -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Tema 3</div>
+                    <h1>Selectores jQuery</h1>
+                </div>
+                <div class="content">
+                    <h2>$(selector) - El corazón de jQuery</h2>
+                    <p>Los selectores permiten "encontrar" elementos en el HTML
+                        para manipularlos.</p>
+
+                    <h3>Selectores Básicos</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Selector</th>
+                                <th>Ejemplo</th>
+                                <th>Selecciona</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>$('p')</code></td>
+                                <td>Por etiqueta</td>
+                                <td>Todos los elementos &lt;p&gt;</td>
+                            </tr>
+                            <tr>
+                                <td><code>$('#miId')</code></td>
+                                <td>Por ID</td>
+                                <td>El elemento con id="miId"</td>
+                            </tr>
+                            <tr>
+                                <td><code>$('.miClase')</code></td>
+                                <td>Por clase</td>
+                                <td>Todos los elementos con class="miClase"</td>
+                            </tr>
+                            <tr>
+                                <td><code>$('*')</code></td>
+                                <td>Universal</td>
+                                <td>TODOS los elementos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Selectores Combinados</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Descendiente: todos los &lt;li&gt; dentro de &lt;ul&gt;</span>
+<span class="code-selector">$</span>(<span class="code-value">'ul li'</span>)
+
+<span class="code-comment">// Hijo directo: solo los &lt;li&gt; hijos directos de &lt;ul&gt;</span>
+<span class="code-selector">$</span>(<span class="code-value">'ul > li'</span>)
+
+<span class="code-comment">// Múltiples selectores: todos los &lt;p&gt; y todos los &lt;div&gt;</span>
+<span class="code-selector">$</span>(<span class="code-value">'p, div'</span>)
+
+<span class="code-comment">// Con clase específica: &lt;p&gt; con class="destacado"</span>
+<span class="code-selector">$</span>(<span class="code-value">'p.destacado'</span>)</code></pre>
+                    </div>
+
+                    <h3>Selectores por Atributo</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Elementos con atributo "name"</span>
+<span class="code-selector">$</span>(<span class="code-value">'[name]'</span>)
+
+<span class="code-comment">// Input con type="text"</span>
+<span class="code-selector">$</span>(<span class="code-value">'input[type="text"]'</span>)
+
+<span class="code-comment">// Links que empiezan con "https"</span>
+<span class="code-selector">$</span>(<span class="code-value">'a[href^="https"]'</span>)
+
+<span class="code-comment">// Imágenes que terminan en ".png"</span>
+<span class="code-selector">$</span>(<span class="code-value">'img[src$=".png"]'</span>)</code></pre>
+                    </div>
+
+                    <h3>Selectores de Filtro</h3>
+                    <div class="two-columns">
+                        <div>
+                            <h4>Posición</h4>
+                            <div class="code-block">
+                                <pre><code class="code-line"><span class="code-comment">// Primer &lt;li&gt;</span>
+<span class="code-selector">$</span>(<span class="code-value">'li:first'</span>)
+
+<span class="code-comment">// Último &lt;li&gt;</span>
+<span class="code-selector">$</span>(<span class="code-value">'li:last'</span>)
+
+<span class="code-comment">// Pares (2, 4, 6...)</span>
+<span class="code-selector">$</span>(<span class="code-value">'li:even'</span>)
+
+<span class="code-comment">// Impares (1, 3, 5...)</span>
+<span class="code-selector">$</span>(<span class="code-value">'li:odd'</span>)</code></pre>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Estado</h4>
+                            <div class="code-block">
+                                <pre><code class="code-line"><span class="code-comment">// Ocultos</span>
+<span class="code-selector">$</span>(<span class="code-value">':hidden'</span>)
+
+<span class="code-comment">// Visibles</span>
+<span class="code-selector">$</span>(<span class="code-value">':visible'</span>)
+
+<span class="code-comment">// Checkboxes marcados</span>
+<span class="code-selector">$</span>(<span class="code-value">':checked'</span>)
+
+<span class="code-comment">// Inputs deshabilitados</span>
+<span class="code-selector">$</span>(<span class="code-value">':disabled'</span>)</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Ejemplo Práctico</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// HTML</span>
+<span class="code-tag">&lt;ul</span> <span class="code-attr">id</span>=<span class="code-value">"miLista"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;li</span> <span class="code-attr">class</span>=<span class="code-value">"activo"</span><span class="code-tag">&gt;</span>Item 1<span class="code-tag">&lt;/li&gt;</span>
+    <span class="code-tag">&lt;li&gt;</span>Item 2<span class="code-tag">&lt;/li&gt;</span>
+    <span class="code-tag">&lt;li</span> <span class="code-attr">class</span>=<span class="code-value">"activo"</span><span class="code-tag">&gt;</span>Item 3<span class="code-tag">&lt;/li&gt;</span>
+<span class="code-tag">&lt;/ul&gt;</span>
+
+<span class="code-comment">// jQuery</span>
+<span class="code-selector">$</span>(<span class="code-value">'#miLista'</span>)              <span class="code-comment">// Selecciona el &lt;ul&gt;</span>
+<span class="code-selector">$</span>(<span class="code-value">'#miLista li'</span>)           <span class="code-comment">// Todos los &lt;li&gt; (3 elementos)</span>
+<span class="code-selector">$</span>(<span class="code-value">'#miLista li.activo'</span>)   <span class="code-comment">// Solo los &lt;li&gt; con class="activo" (2 elementos)</span>
+<span class="code-selector">$</span>(<span class="code-value">'#miLista li:first'</span>)    <span class="code-comment">// Primer &lt;li&gt;</span></code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 7: MANIPULACIÓN DEL DOM -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Tema 3</div>
+                    <h1>Manipulación del DOM con jQuery</h1>
+                </div>
+                <div class="content">
+                    <h2>Métodos para modificar contenido</h2>
+
+                    <h3>.text() - Texto plano</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// OBTENER texto</span>
+<span class="code-selector">var</span> textoActual = <span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">text</span>();
+
+<span class="code-comment">// ESTABLECER texto (sin HTML)</span>
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">text</span>(<span class="code-value">'Nuevo texto'</span>);</code></pre>
+                    </div>
+
+                    <h3>.html() - Contenido HTML</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// OBTENER HTML</span>
+<span class="code-selector">var</span> htmlActual = <span class="code-selector">$</span>(<span class="code-value">'div'</span>).<span class="code-property">html</span>();
+
+<span class="code-comment">// ESTABLECER HTML (con etiquetas)</span>
+<span class="code-selector">$</span>(<span class="code-value">'div'</span>).<span class="code-property">html</span>(<span class="code-value">'&lt;strong&gt;Texto en negrita&lt;/strong&gt;'</span>);</code></pre>
+                    </div>
+
+                    <h3>.val() - Valores de inputs</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// OBTENER valor de input</span>
+<span class="code-selector">var</span> valor = <span class="code-selector">$</span>(<span class="code-value">'input'</span>).<span class="code-property">val</span>();
+
+<span class="code-comment">// ESTABLECER valor</span>
+<span class="code-selector">$</span>(<span class="code-value">'input'</span>).<span class="code-property">val</span>(<span class="code-value">'Nuevo valor'</span>);
+
+<span class="code-comment">// Limpiar input</span>
+<span class="code-selector">$</span>(<span class="code-value">'input'</span>).<span class="code-property">val</span>(<span class="code-value">''</span>);</code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <strong>⚠️ Diferencia importante:</strong>
+                        <ul>
+                            <li><code>.text()</code> - Seguro, no ejecuta
+                                HTML/scripts</li>
+                            <li><code>.html()</code> - Puede ejecutar scripts,
+                                ¡cuidado con datos de usuarios!</li>
+                        </ul>
+                    </div>
+
+                    <h3>Métodos para modificar estilos</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Cambiar UNA propiedad CSS</span>
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">css</span>(<span class="code-value">'color'</span>, <span class="code-value">'red'</span>);
+
+<span class="code-comment">// Cambiar MÚLTIPLES propiedades</span>
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">css</span>({
+    <span class="code-value">'color'</span>: <span class="code-value">'red'</span>,
+    <span class="code-value">'font-size'</span>: <span class="code-value">'20px'</span>,
+    <span class="code-value">'background-color'</span>: <span class="code-value">'yellow'</span>
+});
+
+<span class="code-comment">// OBTENER valor de propiedad CSS</span>
+<span class="code-selector">var</span> colorActual = <span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">css</span>(<span class="code-value">'color'</span>);</code></pre>
+                    </div>
+
+                    <h3>Manipular clases CSS</h3>
+                    <div class="two-columns">
+                        <div>
+                            <div class="code-block">
+                                <pre><code class="code-line"><span class="code-comment">// Agregar clase</span>
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">addClass</span>(<span class="code-value">'activo'</span>);
+
+<span class="code-comment">// Quitar clase</span>
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">removeClass</span>(<span class="code-value">'activo'</span>);
+
+<span class="code-comment">// Alternar clase</span>
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">toggleClass</span>(<span class="code-value">'activo'</span>);</code></pre>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="code-block">
+                                <pre><code class="code-line"><span class="code-comment">// Verificar si tiene clase</span>
+<span class="code-selector">if</span> (<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">hasClass</span>(<span class="code-value">'activo'</span>)) {
+    <span class="code-selector">console</span>.<span class="code-property">log</span>(<span class="code-value">'Tiene la clase'</span>);
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Manipular atributos</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// OBTENER atributo</span>
+<span class="code-selector">var</span> href = <span class="code-selector">$</span>(<span class="code-value">'a'</span>).<span class="code-property">attr</span>(<span class="code-value">'href'</span>);
+
+<span class="code-comment">// ESTABLECER atributo</span>
+<span class="code-selector">$</span>(<span class="code-value">'a'</span>).<span class="code-property">attr</span>(<span class="code-value">'href'</span>, <span class="code-value">'https://google.com'</span>);
+
+<span class="code-comment">// ESTABLECER múltiples atributos</span>
+<span class="code-selector">$</span>(<span class="code-value">'img'</span>).<span class="code-property">attr</span>({
+    <span class="code-value">'src'</span>: <span class="code-value">'imagen.png'</span>,
+    <span class="code-value">'alt'</span>: <span class="code-value">'Descripción'</span>
+});
+
+<span class="code-comment">// ELIMINAR atributo</span>
+<span class="code-selector">$</span>(<span class="code-value">'a'</span>).<span class="code-property">removeAttr</span>(<span class="code-value">'target'</span>);</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 8: CREAR Y AGREGAR ELEMENTOS -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Tema 3</div>
+                    <h1>Crear y Agregar Elementos al DOM</h1>
+                </div>
+                <div class="content">
+                    <h2>Crear elementos nuevos</h2>
+
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Crear elemento vacío</span>
+<span class="code-selector">var</span> nuevoDiv = <span class="code-selector">$</span>(<span class="code-value">'&lt;div&gt;&lt;/div&gt;'</span>);
+
+<span class="code-comment">// Crear elemento con contenido</span>
+<span class="code-selector">var</span> nuevoP = <span class="code-selector">$</span>(<span class="code-value">'&lt;p&gt;Este es un párrafo nuevo&lt;/p&gt;'</span>);
+
+<span class="code-comment">// Crear y configurar en cadena (method chaining)</span>
+<span class="code-selector">var</span> nuevoLi = <span class="code-selector">$</span>(<span class="code-value">'&lt;li&gt;&lt;/li&gt;'</span>)
+    .<span class="code-property">text</span>(<span class="code-value">'Item nuevo'</span>)
+    .<span class="code-property">addClass</span>(<span class="code-value">'activo'</span>)
+    .<span class="code-property">css</span>(<span class="code-value">'color'</span>, <span class="code-value">'red'</span>);</code></pre>
+                    </div>
+
+                    <h3>Métodos para insertar elementos</h3>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Método</th>
+                                <th>Descripción</th>
+                                <th>Ejemplo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>.append()</code></td>
+                                <td>Agrega al FINAL (adentro)</td>
+                                <td>$('#lista').append(nuevoLi)</td>
+                            </tr>
+                            <tr>
+                                <td><code>.prepend()</code></td>
+                                <td>Agrega al INICIO (adentro)</td>
+                                <td>$('#lista').prepend(nuevoLi)</td>
+                            </tr>
+                            <tr>
+                                <td><code>.after()</code></td>
+                                <td>Agrega DESPUÉS (afuera)</td>
+                                <td>$('p').after(nuevoDiv)</td>
+                            </tr>
+                            <tr>
+                                <td><code>.before()</code></td>
+                                <td>Agrega ANTES (afuera)</td>
+                                <td>$('p').before(nuevoDiv)</td>
+                            </tr>
+                            <tr>
+                                <td><code>.appendTo()</code></td>
+                                <td>Igual append, orden invertido</td>
+                                <td>nuevoLi.appendTo('#lista')</td>
+                            </tr>
+                            <tr>
+                                <td><code>.prependTo()</code></td>
+                                <td>Igual prepend, orden invertido</td>
+                                <td>nuevoLi.prependTo('#lista')</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Diferencia entre append() y appendTo()</h3>
+                    <div class="two-columns">
+                        <div>
+                            <h4>.append() - El padre recibe</h4>
+                            <div class="code-block">
+                                <pre><code class="code-line"><span class="code-comment">// Sintaxis: padre.append(hijo)</span>
+<span class="code-selector">$</span>(<span class="code-value">'#lista'</span>).<span class="code-property">append</span>(<span class="code-value">'&lt;li&gt;Nuevo&lt;/li&gt;'</span>);</code></pre>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>.appendTo() - El hijo va hacia</h4>
+                            <div class="code-block">
+                                <pre><code class="code-line"><span class="code-comment">// Sintaxis: hijo.appendTo(padre)</span>
+<span class="code-selector">$</span>(<span class="code-value">'&lt;li&gt;Nuevo&lt;/li&gt;'</span>).<span class="code-property">appendTo</span>(<span class="code-value">'#lista'</span>);</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Ejemplo visual: append vs prepend vs after vs
+                        before</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// HTML inicial</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">id</span>=<span class="code-value">"contenedor"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;p&gt;</span>Párrafo existente<span class="code-tag">&lt;/p&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+
+<span class="code-comment">// jQuery</span>
+<span class="code-selector">$</span>(<span class="code-value">'#contenedor'</span>).<span class="code-property">append</span>(<span class="code-value">'&lt;p&gt;Al final (dentro)&lt;/p&gt;'</span>);
+<span class="code-selector">$</span>(<span class="code-value">'#contenedor'</span>).<span class="code-property">prepend</span>(<span class="code-value">'&lt;p&gt;Al inicio (dentro)&lt;/p&gt;'</span>);
+<span class="code-selector">$</span>(<span class="code-value">'#contenedor'</span>).<span class="code-property">after</span>(<span class="code-value">'&lt;p&gt;Después (fuera)&lt;/p&gt;'</span>);
+<span class="code-selector">$</span>(<span class="code-value">'#contenedor'</span>).<span class="code-property">before</span>(<span class="code-value">'&lt;p&gt;Antes (fuera)&lt;/p&gt;'</span>);
+
+<span class="code-comment">// Resultado:</span>
+<span class="code-tag">&lt;p&gt;</span>Antes (fuera)<span class="code-tag">&lt;/p&gt;</span>
+<span class="code-tag">&lt;div</span> <span class="code-attr">id</span>=<span class="code-value">"contenedor"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;p&gt;</span>Al inicio (dentro)<span class="code-tag">&lt;/p&gt;</span>
+    <span class="code-tag">&lt;p&gt;</span>Párrafo existente<span class="code-tag">&lt;/p&gt;</span>
+    <span class="code-tag">&lt;p&gt;</span>Al final (dentro)<span class="code-tag">&lt;/p&gt;</span>
+<span class="code-tag">&lt;/div&gt;</span>
+<span class="code-tag">&lt;p&gt;</span>Después (fuera)<span class="code-tag">&lt;/p&gt;</span></code></pre>
+                    </div>
+
+                    <h3>Eliminar elementos</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Eliminar elemento (y sus hijos)</span>
+<span class="code-selector">$</span>(<span class="code-value">'#miDiv'</span>).<span class="code-property">remove</span>();
+
+<span class="code-comment">// Vaciar contenido (solo elimina hijos, no el elemento)</span>
+<span class="code-selector">$</span>(<span class="code-value">'#miDiv'</span>).<span class="code-property">empty</span>();</code></pre>
+                    </div>
+
+                    <div class="note-box">
+                        <strong>💡 Method Chaining:</strong> jQuery permite
+                        encadenar métodos porque cada método devuelve el objeto
+                        jQuery:
+                        <br><code>$('p').addClass('activo').css('color',
+                            'red').text('Hola');</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 9: EVENTOS - PARTE 1 -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Tema 4</div>
+                    <h1>Eventos en jQuery</h1>
+                </div>
+                <div class="content">
+                    <h2>¿Qué son los eventos?</h2>
+                    <p>Los eventos son <strong>acciones que ocurren</strong> en
+                        la página web: clicks, movimientos del mouse, teclas
+                        presionadas, etc.</p>
+
+                    <h3>Tipos de eventos más comunes</h3>
+                    <div class="grid-3">
+                        <div class="card">
+                            <h4>🖱️ Mouse</h4>
+                            <ul>
+                                <li><code>click</code></li>
+                                <li><code>dblclick</code></li>
+                                <li><code>mouseenter</code></li>
+                                <li><code>mouseleave</code></li>
+                                <li><code>mouseover</code></li>
+                                <li><code>mouseout</code></li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>⌨️ Teclado</h4>
+                            <ul>
+                                <li><code>keydown</code></li>
+                                <li><code>keyup</code></li>
+                                <li><code>keypress</code></li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>📝 Formularios</h4>
+                            <ul>
+                                <li><code>focus</code></li>
+                                <li><code>blur</code></li>
+                                <li><code>change</code></li>
+                                <li><code>submit</code></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Método .on() - La forma moderna</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Sintaxis básica</span>
+<span class="code-selector">$</span>(<span class="code-value">'selector'</span>).<span class="code-property">on</span>(<span class="code-value">'evento'</span>, <span class="code-selector">function</span>() {
+    <span class="code-comment">// Código a ejecutar cuando ocurre el evento</span>
+});
+
+<span class="code-comment">// Ejemplo: Click en un botón</span>
+<span class="code-selector">$</span>(<span class="code-value">'#miBoton'</span>).<span class="code-property">on</span>(<span class="code-value">'click'</span>, <span class="code-selector">function</span>() {
+    <span class="code-selector">alert</span>(<span class="code-value">'¡Botón clickeado!'</span>);
+});</code></pre>
+                    </div>
+
+                    <h3>Atajos de eventos (métodos directos)</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Estas dos formas son equivalentes:</span>
+
+<span class="code-comment">// Forma 1: Con .on()</span>
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">on</span>(<span class="code-value">'click'</span>, <span class="code-selector">function</span>() {
+    <span class="code-selector">console</span>.<span class="code-property">log</span>(<span class="code-value">'Click!'</span>);
+});
+
+<span class="code-comment">// Forma 2: Atajo directo .click()</span>
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">click</span>(<span class="code-selector">function</span>() {
+    <span class="code-selector">console</span>.<span class="code-property">log</span>(<span class="code-value">'Click!'</span>);
+});</code></pre>
+                    </div>
+
+                    <h3>$(this) - Elemento que disparó el evento</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Cambiar solo el elemento clickeado</span>
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">on</span>(<span class="code-value">'click'</span>, <span class="code-selector">function</span>() {
+    <span class="code-comment">// $(this) se refiere al &lt;p&gt; específico que fue clickeado</span>
+    <span class="code-selector">$</span>(<span class="code-selector">this</span>).<span class="code-property">css</span>(<span class="code-value">'color'</span>, <span class="code-value">'red'</span>);
+    <span class="code-selector">$</span>(<span class="code-selector">this</span>).<span class="code-property">addClass</span>(<span class="code-value">'seleccionado'</span>);
+});</code></pre>
+                    </div>
+
+                    <h3>El objeto event (eventObject)</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Acceder a información del evento</span>
+<span class="code-selector">$</span>(<span class="code-value">'input'</span>).<span class="code-property">on</span>(<span class="code-value">'click'</span>, <span class="code-selector">function</span>(<span class="code-selector">event</span>) {
+    <span class="code-selector">console</span>.<span class="code-property">log</span>(<span class="code-value">'Tipo de evento:'</span>, event.<span class="code-property">type</span>);         <span class="code-comment">// "click"</span>
+    <span class="code-selector">console</span>.<span class="code-property">log</span>(<span class="code-value">'Elemento:'</span>, event.<span class="code-property">target</span>);             <span class="code-comment">// El elemento clickeado</span>
+    <span class="code-selector">console</span>.<span class="code-property">log</span>(<span class="code-value">'Coordenadas X:'</span>, event.<span class="code-property">pageX</span>);        <span class="code-comment">// Posición X del click</span>
+    <span class="code-selector">console</span>.<span class="code-property">log</span>(<span class="code-value">'Coordenadas Y:'</span>, event.<span class="code-property">pageY</span>);        <span class="code-comment">// Posición Y del click</span>
+    
+    <span class="code-comment">// Prevenir comportamiento por defecto</span>
+    event.<span class="code-property">preventDefault</span>();
+});</code></pre>
+                    </div>
+
+                    <div class="note-box">
+                        <strong>💡 preventDefault():</strong> Previene la acción
+                        por defecto del navegador. Ejemplo: evitar que un
+                        formulario se envíe, o que un link navegue.
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 10: EVENTOS - PARTE 2 -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Tema 4</div>
+                    <h1>Eventos jQuery - Técnicas Avanzadas</h1>
+                </div>
+                <div class="content">
+                    <h2>Vincular múltiples eventos</h2>
+
+                    <h3>Opción 1: Múltiples eventos, misma función</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Ejecutar la misma función en varios eventos</span>
+<span class="code-selector">$</span>(<span class="code-value">'input'</span>).<span class="code-property">on</span>(<span class="code-value">'focus blur'</span>, <span class="code-selector">function</span>(<span class="code-selector">e</span>) {
+    <span class="code-selector">console</span>.<span class="code-property">log</span>(<span class="code-value">'Evento:'</span>, e.<span class="code-property">type</span>); <span class="code-comment">// Mostrará "focus" o "blur"</span>
+});</code></pre>
+                    </div>
+
+                    <h3>Opción 2: Objeto con eventos y funciones diferentes</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Cada evento tiene su propia función</span>
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">on</span>({
+    <span class="code-value">'click'</span>: <span class="code-selector">function</span>() {
+        <span class="code-selector">console</span>.<span class="code-property">log</span>(<span class="code-value">'Clickeado'</span>);
+    },
+    <span class="code-value">'mouseenter'</span>: <span class="code-selector">function</span>() {
+        <span class="code-selector">$</span>(<span class="code-selector">this</span>).<span class="code-property">css</span>(<span class="code-value">'background-color'</span>, <span class="code-value">'yellow'</span>);
+    },
+    <span class="code-value">'mouseleave'</span>: <span class="code-selector">function</span>() {
+        <span class="code-selector">$</span>(<span class="code-selector">this</span>).<span class="code-property">css</span>(<span class="code-value">'background-color'</span>, <span class="code-value">'white'</span>);
+    }
+});</code></pre>
+                    </div>
+
+                    <h3>Pasar datos al evento</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Sintaxis: .on(eventos, data, handler)</span>
+<span class="code-selector">$</span>(<span class="code-value">'button'</span>).<span class="code-property">on</span>(<span class="code-value">'click'</span>, { <span class="code-property">usuario</span>: <span class="code-value">'Miguel'</span>, <span class="code-property">rol</span>: <span class="code-value">'Instructor'</span> }, <span class="code-selector">function</span>(<span class="code-selector">e</span>) {
+    <span class="code-selector">console</span>.<span class="code-property">log</span>(<span class="code-value">'Usuario:'</span>, e.<span class="code-property">data</span>.<span class="code-property">usuario</span>); <span class="code-comment">// "Miguel"</span>
+    <span class="code-selector">console</span>.<span class="code-property">log</span>(<span class="code-value">'Rol:'</span>, e.<span class="code-property">data</span>.<span class="code-property">rol</span>);         <span class="code-comment">// "Instructor"</span>
+});</code></pre>
+                    </div>
+
+                    <h3>.one() - Evento de una sola vez</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Se ejecuta SOLO LA PRIMERA VEZ</span>
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">one</span>(<span class="code-value">'click'</span>, <span class="code-selector">function</span>() {
+    <span class="code-selector">console</span>.<span class="code-property">log</span>(<span class="code-value">'Primera vez clickeado'</span>);
+    <span class="code-comment">// Después de este click, el evento se desvincula automáticamente</span>
+});
+
+<span class="code-comment">// Caso de uso: Mensaje de bienvenida que aparece solo una vez</span>
+<span class="code-selector">$</span>(<span class="code-value">'#btnComenzar'</span>).<span class="code-property">one</span>(<span class="code-value">'click'</span>, <span class="code-selector">function</span>() {
+    <span class="code-selector">alert</span>(<span class="code-value">'¡Bienvenido! Este mensaje solo aparece una vez.'</span>);
+});</code></pre>
+                    </div>
+
+                    <h3>.off() - Desvincular eventos</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Desvincular TODOS los eventos de un elemento</span>
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">off</span>();
+
+<span class="code-comment">// Desvincular evento específico</span>
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">off</span>(<span class="code-value">'click'</span>);
+
+<span class="code-comment">// Desvincular función específica (debe ser nombrada)</span>
+<span class="code-selector">function</span> <span class="code-selector">miHandler</span>() {
+    <span class="code-selector">console</span>.<span class="code-property">log</span>(<span class="code-value">'Click!'</span>);
+}
+
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">on</span>(<span class="code-value">'click'</span>, miHandler);     <span class="code-comment">// Vincular</span>
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">off</span>(<span class="code-value">'click'</span>, miHandler);    <span class="code-comment">// Desvincular solo esta función</span></code></pre>
+                    </div>
+
+                    <h3>Event Namespaces (Espacios de nombres)</h3>
+                    <p>Permiten organizar y desvincular eventos de forma más
+                        granular:</p>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Vincular con namespace</span>
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">on</span>(<span class="code-value">'click.miNamespace'</span>, <span class="code-selector">function</span>() {
+    <span class="code-selector">console</span>.<span class="code-property">log</span>(<span class="code-value">'Click con namespace'</span>);
+});
+
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">on</span>(<span class="code-value">'mouseenter.miNamespace'</span>, <span class="code-selector">function</span>() {
+    <span class="code-selector">console</span>.<span class="code-property">log</span>(<span class="code-value">'MouseEnter con namespace'</span>);
+});
+
+<span class="code-comment">// Desvincular SOLO eventos con ese namespace</span>
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">off</span>(<span class="code-value">'.miNamespace'</span>); <span class="code-comment">// Desvincula AMBOS eventos</span>
+
+<span class="code-comment">// Desvincular evento específico del namespace</span>
+<span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">off</span>(<span class="code-value">'click.miNamespace'</span>); <span class="code-comment">// Solo el click</span></code></pre>
+                    </div>
+
+                    <div class="success-box">
+                        <strong>💡 Ventajas de los namespaces:</strong>
+                        <ul>
+                            <li>Organizar eventos de diferentes módulos o
+                                plugins</li>
+                            <li>Desvincular grupos de eventos sin afectar
+                                otros</li>
+                            <li>Evitar conflictos entre diferentes partes del
+                                código</li>
+                        </ul>
+                    </div>
+
+                    <h3>$(document).ready() - Esperar que cargue el DOM</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// Forma completa</span>
+<span class="code-selector">$</span>(<span class="code-selector">document</span>).<span class="code-property">ready</span>(<span class="code-selector">function</span>() {
+    <span class="code-comment">// Código que se ejecuta cuando el DOM está listo</span>
+    <span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">click</span>(<span class="code-selector">function</span>() {
+        <span class="code-selector">alert</span>(<span class="code-value">'Click!'</span>);
+    });
+});
+
+<span class="code-comment">// Forma abreviada (más común)</span>
+<span class="code-selector">$</span>(<span class="code-selector">function</span>() {
+    <span class="code-comment">// Todo tu código jQuery aquí</span>
+});</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 11: DELEGACIÓN DE EVENTOS -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Tema 4</div>
+                    <h1>Delegación de Eventos</h1>
+                </div>
+                <div class="content">
+                    <h2>El problema con elementos dinámicos</h2>
+
+                    <div class="warning-box">
+                        <h4>❌ Esto NO funciona para elementos creados
+                            después:</h4>
+                        <div class="code-block">
+                            <pre><code class="code-line"><span class="code-comment">// Vincular eventos a elementos existentes</span>
+<span class="code-selector">$</span>(<span class="code-value">'.boton'</span>).<span class="code-property">on</span>(<span class="code-value">'click'</span>, <span class="code-selector">function</span>() {
+    <span class="code-selector">alert</span>(<span class="code-value">'Click!'</span>);
+});
+
+<span class="code-comment">// Crear nuevo botón DESPUÉS</span>
+<span class="code-selector">$</span>(<span class="code-value">'body'</span>).<span class="code-property">append</span>(<span class="code-value">'&lt;button class="boton"&gt;Nuevo&lt;/button&gt;'</span>);
+<span class="code-comment">// ❌ Este botón NO responderá al click</span></code></pre>
+                        </div>
+                    </div>
+
+                    <h3>Solución: Delegación de eventos</h3>
+                    <p>Vincular el evento a un <strong>elemento padre</strong>
+                        que siempre existe, y especificar el <strong>selector
+                            hijo</strong>:</p>
+
+                    <div class="success-box">
+                        <h4>✅ Esto SÍ funciona para elementos dinámicos:</h4>
+                        <div class="code-block">
+                            <pre><code class="code-line"><span class="code-comment">// Sintaxis: $(padreEstatico).on('evento', 'selector hijo', function)</span>
+<span class="code-selector">$</span>(<span class="code-value">'body'</span>).<span class="code-property">on</span>(<span class="code-value">'click'</span>, <span class="code-value">'.boton'</span>, <span class="code-selector">function</span>() {
+    <span class="code-selector">alert</span>(<span class="code-value">'Click!'</span>);
+});
+
+<span class="code-comment">// Ahora CUALQUIER botón con class="boton" funcionará</span>
+<span class="code-comment">// Incluso los que se creen después</span>
+<span class="code-selector">$</span>(<span class="code-value">'body'</span>).<span class="code-property">append</span>(<span class="code-value">'&lt;button class="boton"&gt;Nuevo&lt;/button&gt;'</span>);
+<span class="code-comment">// ✅ Este botón SÍ responderá al click</span></code></pre>
+                        </div>
+                    </div>
+
+                    <h3>¿Cómo funciona?</h3>
+                    <ol>
+                        <li>El evento se vincula al <code>body</code> (elemento
+                            padre estático)</li>
+                        <li>Cuando ocurre un click <strong>en cualquier
+                                parte</strong> del body</li>
+                        <li>jQuery verifica si el elemento clickeado coincide
+                            con <code>.boton</code></li>
+                        <li>Si coincide, ejecuta la función</li>
+                    </ol>
+
+                    <h3>Ejemplo práctico: Lista dinámica</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-tag">&lt;ul</span> <span class="code-attr">id</span>=<span class="code-value">"lista"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;li&gt;</span>Item 1 <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-value">"eliminar"</span><span class="code-tag">&gt;</span>X<span class="code-tag">&lt;/button&gt;&lt;/li&gt;</span>
+    <span class="code-tag">&lt;li&gt;</span>Item 2 <span class="code-tag">&lt;button</span> <span class="code-attr">class</span>=<span class="code-value">"eliminar"</span><span class="code-tag">&gt;</span>X<span class="code-tag">&lt;/button&gt;&lt;/li&gt;</span>
+<span class="code-tag">&lt;/ul&gt;</span>
+<span class="code-tag">&lt;button</span> <span class="code-attr">id</span>=<span class="code-value">"agregar"</span><span class="code-tag">&gt;</span>Agregar Item<span class="code-tag">&lt;/button&gt;</span>
+
+<span class="code-tag">&lt;script&gt;</span>
+<span class="code-comment">// Delegación: funciona para botones nuevos también</span>
+<span class="code-selector">$</span>(<span class="code-value">'#lista'</span>).<span class="code-property">on</span>(<span class="code-value">'click'</span>, <span class="code-value">'.eliminar'</span>, <span class="code-selector">function</span>() {
+    <span class="code-selector">$</span>(<span class="code-selector">this</span>).<span class="code-property">parent</span>().<span class="code-property">remove</span>(); <span class="code-comment">// Elimina el &lt;li&gt; padre</span>
+});
+
+<span class="code-comment">// Agregar nuevos items dinámicamente</span>
+<span class="code-selector">var</span> contador = 3;
+<span class="code-selector">$</span>(<span class="code-value">'#agregar'</span>).<span class="code-property">on</span>(<span class="code-value">'click'</span>, <span class="code-selector">function</span>() {
+    <span class="code-selector">var</span> nuevoItem = <span class="code-value">'&lt;li&gt;Item '</span> + contador + <span class="code-value">' &lt;button class="eliminar"&gt;X&lt;/button&gt;&lt;/li&gt;'</span>;
+    <span class="code-selector">$</span>(<span class="code-value">'#lista'</span>).<span class="code-property">append</span>(nuevoItem);
+    contador++;
+});
+<span class="code-tag">&lt;/script&gt;</span></code></pre>
+                    </div>
+
+                    <h3>Comparación: Directo vs Delegado</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aspecto</th>
+                                <th>Evento Directo</th>
+                                <th>Evento Delegado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Sintaxis</strong></td>
+                                <td>$('.btn').on('click', fn)</td>
+                                <td>$('body').on('click', '.btn', fn)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Elementos dinámicos</strong></td>
+                                <td>❌ No funciona</td>
+                                <td>✅ Sí funciona</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rendimiento</strong></td>
+                                <td>Más rápido (menos verificaciones)</td>
+                                <td>Ligeramente más lento</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Memoria</strong></td>
+                                <td>Más uso (1 listener por elemento)</td>
+                                <td>Menos uso (1 listener total)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cuándo usar</strong></td>
+                                <td>Elementos estáticos</td>
+                                <td>Elementos dinámicos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="note-box">
+                        <strong>💡 Regla práctica:</strong>
+                        <ul>
+                            <li>Si los elementos <strong>ya existen</strong> en
+                                el HTML → evento directo</li>
+                            <li>Si los elementos se <strong>crean con
+                                    JavaScript</strong> → delegación</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 12: PREGUNTA 1 - $(this) -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Práctica 1</div>
+                    <h1>Quiz Interactivo - Pregunta 1</h1>
+                </div>
+                <div class="content">
+                    <h2>Pregunta: ¿Qué hace este código?</h2>
+
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-selector">$</span>(<span class="code-value">'p'</span>).<span class="code-property">on</span>(<span class="code-value">'click'</span>, <span class="code-selector">function</span>() {
+    <span class="code-selector">$</span>(<span class="code-selector">this</span>).<span class="code-property">css</span>(<span class="code-value">'color'</span>, <span class="code-value">'red'</span>);
+});</code></pre>
+                    </div>
+
+                    <h3>Elige la respuesta correcta:</h3>
+
+                    <div class="grid-3">
+                        <div class="card quiz-card"
+                            onclick="mostrarRespuesta(this, false, 'respuesta1')">
+                            <h4>A) <span class="indicador-oculto">❌</span></h4>
+                            <p>Cambia el color de TODOS los párrafos a rojo
+                                inmediatamente</p>
+                        </div>
+
+                        <div class="card quiz-card"
+                            onclick="mostrarRespuesta(this, true, 'respuesta1')">
+                            <h4>B) <span class="indicador-oculto">✅</span></h4>
+                            <p>Cambia el color a rojo solo del párrafo que se
+                                clickea</p>
+                        </div>
+
+                        <div class="card quiz-card"
+                            onclick="mostrarRespuesta(this, false, 'respuesta1')">
+                            <h4>C) <span class="indicador-oculto">❌</span></h4>
+                            <p>Cambia el color del primer párrafo solamente</p>
+                        </div>
+                    </div>
+
+                    <div id="respuesta1" class="respuesta-oculta success-box"
+                        style="margin-top: 20px;">
+                        <h4>✅ Respuesta correcta: B</h4>
+                        <p><strong>Explicación:</strong></p>
+                        <ul>
+                            <li><code>$('p')</code> selecciona TODOS los
+                                párrafos</li>
+                            <li><code>.on('click', function())</code> vincula el
+                                evento a cada uno</li>
+                            <li><code>$(this)</code> se refiere solo al párrafo
+                                específico que fue clickeado</li>
+                            <li>Por lo tanto, solo ese párrafo cambiará de
+                                color</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 13: PREGUNTA 2 - Delegación de eventos -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Práctica 2</div>
+                    <h1>Quiz Interactivo - Pregunta 2</h1>
+                </div>
+                <div class="content">
+                    <h2>Pregunta 2: Delegación de eventos</h2>
+
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-selector">$</span>(<span class="code-value">'.boton'</span>).<span class="code-property">on</span>(<span class="code-value">'click'</span>, <span class="code-selector">function</span>() { <span class="code-selector">alert</span>(<span class="code-value">'Click!'</span>); });
+<span class="code-selector">$</span>(<span class="code-value">'body'</span>).<span class="code-property">append</span>(<span class="code-value">'&lt;button class="boton"&gt;Nuevo&lt;/button&gt;'</span>);</code></pre>
+                    </div>
+
+                    <h3>¿El botón nuevo responderá al click?</h3>
+
+                    <div class="two-columns">
+                        <div class="card quiz-card"
+                            onclick="mostrarRespuesta(this, true, 'respuesta2')">
+                            <h4>A) <span class="indicador-oculto">✅</span></h4>
+                            <p>NO, porque el evento se vinculó ANTES de crear el
+                                botón</p>
+                        </div>
+
+                        <div class="card quiz-card"
+                            onclick="mostrarRespuesta(this, false, 'respuesta2')">
+                            <h4>B) <span class="indicador-oculto">❌</span></h4>
+                            <p>SÍ, jQuery detecta automáticamente elementos
+                                nuevos</p>
+                        </div>
+                    </div>
+
+                    <div id="respuesta2" class="respuesta-oculta success-box"
+                        style="margin-top: 20px;">
+                        <h4>✅ Respuesta correcta: A</h4>
+                        <p><strong>Explicación:</strong></p>
+                        <ul>
+                            <li>El evento se vinculó a los elementos
+                                <code>.boton</code> que existían en ese
+                                momento</li>
+                            <li>El botón nuevo se creó DESPUÉS, por lo que no
+                                tiene el evento</li>
+                            <li><strong>Solución:</strong> Usar delegación de
+                                eventos:
+                                <br><code>$('body').on('click', '.boton',
+                                    function() {...});</code>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 14: PREGUNTA 3 - .text() vs .html() -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Práctica 3</div>
+                    <h1>Quiz Interactivo - Pregunta 3</h1>
+                </div>
+                <div class="content">
+                    <h2>Pregunta 3: ¿Cuál es la diferencia?</h2>
+
+                    <div class="two-columns">
+                        <div>
+                            <h4>Código A:</h4>
+                            <div class="code-block">
+                                <pre><code class="code-line"><span class="code-selector">$</span>(<span class="code-value">'#div1'</span>).<span class="code-property">text</span>(<span class="code-value">'&lt;strong&gt;Hola&lt;/strong&gt;'</span>);</code></pre>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Código B:</h4>
+                            <div class="code-block">
+                                <pre><code class="code-line"><span class="code-selector">$</span>(<span class="code-value">'#div2'</span>).<span class="code-property">html</span>(<span class="code-value">'&lt;strong&gt;Hola&lt;/strong&gt;'</span>);</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>¿Qué se mostrará en pantalla?</h3>
+
+                    <div class="grid-3">
+                        <div class="card quiz-card"
+                            onclick="mostrarRespuesta(this, true, 'respuesta3')">
+                            <h4>A) <span class="indicador-oculto">✅</span></h4>
+                            <p><strong>div1:</strong>
+                                &lt;strong&gt;Hola&lt;/strong&gt;<br>
+                                <strong>div2:</strong> <strong>Hola</strong> (en
+                                negrita)</p>
+                        </div>
+
+                        <div class="card quiz-card"
+                            onclick="mostrarRespuesta(this, false, 'respuesta3')">
+                            <h4>B) <span class="indicador-oculto">❌</span></h4>
+                            <p>Ambos mostrarán <strong>Hola</strong> en
+                                negrita</p>
+                        </div>
+
+                        <div class="card quiz-card"
+                            onclick="mostrarRespuesta(this, false, 'respuesta3')">
+                            <h4>C) <span class="indicador-oculto">❌</span></h4>
+                            <p>Ambos mostrarán
+                                &lt;strong&gt;Hola&lt;/strong&gt;</p>
+                        </div>
+                    </div>
+
+                    <div id="respuesta3" class="respuesta-oculta success-box"
+                        style="margin-top: 20px;">
+                        <h4>✅ Respuesta correcta: A</h4>
+                        <p><strong>Explicación:</strong></p>
+                        <ul>
+                            <li><code>.text()</code> inserta el contenido como
+                                <strong>texto plano</strong>, sin interpretar
+                                HTML</li>
+                            <li>Por eso div1 mostrará literalmente:
+                                &lt;strong&gt;Hola&lt;/strong&gt;</li>
+                            <li><code>.html()</code> inserta el contenido como
+                                <strong>HTML</strong>, interpretando las
+                                etiquetas</li>
+                            <li>Por eso div2 mostrará: <strong>Hola</strong> (la
+                                palabra en negrita)</li>
+                            <li><strong>Seguridad:</strong> Usa
+                                <code>.text()</code> con datos de usuarios para
+                                evitar XSS</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 15: PREGUNTA 4 - .append() vs .prepend() -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Práctica 4</div>
+                    <h1>Quiz Interactivo - Pregunta 4</h1>
+                </div>
+                <div class="content">
+                    <h2>Pregunta 4: ¿Dónde se agregará el elemento?</h2>
+
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-comment">// HTML inicial:</span>
+<span class="code-tag">&lt;ul</span> <span class="code-attr">id</span>=<span class="code-value">"lista"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;li&gt;</span>Item 1<span class="code-tag">&lt;/li&gt;</span>
+    <span class="code-tag">&lt;li&gt;</span>Item 2<span class="code-tag">&lt;/li&gt;</span>
+<span class="code-tag">&lt;/ul&gt;</span>
+
+<span class="code-comment">// jQuery:</span>
+<span class="code-selector">$</span>(<span class="code-value">'#lista'</span>).<span class="code-property">prepend</span>(<span class="code-value">'&lt;li&gt;Item Nuevo&lt;/li&gt;'</span>);</code></pre>
+                    </div>
+
+                    <h3>¿Cuál será el resultado final?</h3>
+
+                    <div class="grid-3">
+                        <div class="card quiz-card"
+                            onclick="mostrarRespuesta(this, true, 'respuesta4')">
+                            <h4>A) <span class="indicador-oculto">✅</span></h4>
+                            <p>• Item Nuevo<br>
+                                • Item 1<br>
+                                • Item 2</p>
+                        </div>
+
+                        <div class="card quiz-card"
+                            onclick="mostrarRespuesta(this, false, 'respuesta4')">
+                            <h4>B) <span class="indicador-oculto">❌</span></h4>
+                            <p>• Item 1<br>
+                                • Item 2<br>
+                                • Item Nuevo</p>
+                        </div>
+
+                        <div class="card quiz-card"
+                            onclick="mostrarRespuesta(this, false, 'respuesta4')">
+                            <h4>C) <span class="indicador-oculto">❌</span></h4>
+                            <p>• Item 1<br>
+                                • Item Nuevo<br>
+                                • Item 2</p>
+                        </div>
+                    </div>
+
+                    <div id="respuesta4" class="respuesta-oculta success-box"
+                        style="margin-top: 20px;">
+                        <h4>✅ Respuesta correcta: A</h4>
+                        <p><strong>Explicación:</strong></p>
+                        <ul>
+                            <li><code>.prepend()</code> agrega el elemento al
+                                <strong>INICIO</strong> del contenedor (como
+                                primer hijo)</li>
+                            <li><code>.append()</code> agrega el elemento al
+                                <strong>FINAL</strong> del contenedor (como
+                                último hijo)</li>
+                            <li>En este caso, "Item Nuevo" se inserta antes de
+                                "Item 1"</li>
+                        </ul>
+                        <div class="note-box" style="margin-top: 15px;">
+                            <strong>💡 Recordatorio:</strong><br>
+                            • <code>.prepend()</code> = Al inicio (dentro)<br>
+                            • <code>.append()</code> = Al final (dentro)<br>
+                            • <code>.before()</code> = Antes (fuera)<br>
+                            • <code>.after()</code> = Después (fuera)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 16: EJERCICIO PRÁCTICO GUIADO -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Práctica 2</div>
+                    <h1>Ejercicio Práctico: Lista de Tareas</h1>
+                </div>
+                <div class="content">
+                    <h2>Vamos a crear una lista de tareas interactiva</h2>
+
+                    <h3>Requerimientos:</h3>
+                    <ol>
+                        <li>Una lista <code>&lt;ul&gt;</code> con 3 tareas
+                            iniciales</li>
+                        <li>Un input para escribir nuevas tareas</li>
+                        <li>Un botón "Agregar Tarea"</li>
+                        <li>Cada tarea tiene un botón "X" para eliminarla</li>
+                        <li>Al hacer click en una tarea, se tacha (toggle class
+                            "completada")</li>
+                    </ol>
+
+                    <h3>HTML base:</h3>
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html</span> <span class="code-attr">lang</span>=<span class="code-value">"es"</span><span class="code-tag">&gt;</span>
+<span class="code-tag">&lt;head&gt;</span>
+    <span class="code-tag">&lt;meta</span> <span class="code-attr">charset</span>=<span class="code-value">"UTF-8"</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;title&gt;</span>Lista de Tareas<span class="code-tag">&lt;/title&gt;</span>
+    <span class="code-tag">&lt;style&gt;</span>
+        <span class="code-selector">.completada</span> { <span class="code-property">text-decoration</span>: <span class="code-css-value">line-through</span>; <span class="code-property">opacity</span>: <span class="code-css-value">0.5</span>; }
+        <span class="code-selector">li</span> { <span class="code-property">margin</span>: <span class="code-css-value">10px 0</span>; <span class="code-property">cursor</span>: <span class="code-css-value">pointer</span>; }
+        <span class="code-selector">.eliminar</span> { <span class="code-property">margin-left</span>: <span class="code-css-value">10px</span>; <span class="code-property">color</span>: <span class="code-css-value">red</span>; <span class="code-property">cursor</span>: <span class="code-css-value">pointer</span>; }
+    <span class="code-tag">&lt;/style&gt;</span>
+<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body&gt;</span>
+    <span class="code-tag">&lt;h1&gt;</span>Mi Lista de Tareas<span class="code-tag">&lt;/h1&gt;</span>
+    
+    <span class="code-tag">&lt;input</span> <span class="code-attr">type</span>=<span class="code-value">"text"</span> <span class="code-attr">id</span>=<span class="code-value">"nuevaTarea"</span> <span class="code-attr">placeholder</span>=<span class="code-value">"Escribe una tarea..."</span><span class="code-tag">&gt;</span>
+    <span class="code-tag">&lt;button</span> <span class="code-attr">id</span>=<span class="code-value">"btnAgregar"</span><span class="code-tag">&gt;</span>Agregar Tarea<span class="code-tag">&lt;/button&gt;</span>
+    
+    <span class="code-tag">&lt;ul</span> <span class="code-attr">id</span>=<span class="code-value">"listaTareas"</span><span class="code-tag">&gt;</span>
+        <span class="code-tag">&lt;li&gt;</span>Estudiar JavaScript <span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-value">"eliminar"</span><span class="code-tag">&gt;</span>X<span class="code-tag">&lt;/span&gt;&lt;/li&gt;</span>
+        <span class="code-tag">&lt;li&gt;</span>Practicar jQuery <span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-value">"eliminar"</span><span class="code-tag">&gt;</span>X<span class="code-tag">&lt;/span&gt;&lt;/li&gt;</span>
+        <span class="code-tag">&lt;li&gt;</span>Hacer ejercicios <span class="code-tag">&lt;span</span> <span class="code-attr">class</span>=<span class="code-value">"eliminar"</span><span class="code-tag">&gt;</span>X<span class="code-tag">&lt;/span&gt;&lt;/li&gt;</span>
+    <span class="code-tag">&lt;/ul&gt;</span>
+
+    <span class="code-tag">&lt;script</span> <span class="code-attr">src</span>=<span class="code-value">"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"</span><span class="code-tag">&gt;&lt;/script&gt;</span>
+    <span class="code-tag">&lt;script&gt;</span>
+        <span class="code-comment">// Tu código jQuery aquí</span>
+    <span class="code-tag">&lt;/script&gt;</span>
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></code></pre>
+                    </div>
+
+                    <h3>Tu tarea: Completar el JavaScript</h3>
+                    <div class="note-box">
+                        <p><strong>Pistas:</strong></p>
+                        <ol>
+                            <li>Usa <code>$(document).ready()</code> para
+                                asegurar que el DOM esté cargado</li>
+                            <li>Para agregar tareas: captura el valor del input
+                                con <code>.val()</code></li>
+                            <li>Usa <code>.append()</code> para agregar el nuevo
+                                <code>&lt;li&gt;</code></li>
+                            <li>Para eliminar: usa
+                                <code>$(this).parent().remove()</code></li>
+                            <li>Para tachar: usa
+                                <code>.toggleClass('completada')</code></li>
+                            <li>¡Usa delegación de eventos para los botones
+                                eliminar!</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 17: SOLUCIÓN DEL EJERCICIO -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Práctica 2</div>
+                    <h1>Solución: Lista de Tareas</h1>
+                </div>
+                <div class="content">
+                    <h2>Código JavaScript completo</h2>
+
+                    <div class="code-block">
+                        <pre><code class="code-line"><span class="code-selector">$</span>(<span class="code-selector">document</span>).<span class="code-property">ready</span>(<span class="code-selector">function</span>() {
+    
+    <span class="code-comment">// 1. Agregar nueva tarea</span>
+    <span class="code-selector">$</span>(<span class="code-value">'#btnAgregar'</span>).<span class="code-property">on</span>(<span class="code-value">'click'</span>, <span class="code-selector">function</span>() {
+        <span class="code-comment">// Obtener el valor del input</span>
+        <span class="code-selector">var</span> textoTarea = <span class="code-selector">$</span>(<span class="code-value">'#nuevaTarea'</span>).<span class="code-property">val</span>();
+        
+        <span class="code-comment">// Validar que no esté vacío</span>
+        <span class="code-selector">if</span> (textoTarea.<span class="code-property">trim</span>() === <span class="code-value">''</span>) {
+            <span class="code-selector">alert</span>(<span class="code-value">'Por favor escribe una tarea'</span>);
+            <span class="code-selector">return</span>;
+        }
+        
+        <span class="code-comment">// Crear nuevo elemento &lt;li&gt; con botón eliminar</span>
+        <span class="code-selector">var</span> nuevaTarea = <span class="code-value">'&lt;li&gt;'</span> + textoTarea + <span class="code-value">' &lt;span class="eliminar"&gt;X&lt;/span&gt;&lt;/li&gt;'</span>;
+        
+        <span class="code-comment">// Agregar a la lista</span>
+        <span class="code-selector">$</span>(<span class="code-value">'#listaTareas'</span>).<span class="code-property">append</span>(nuevaTarea);
+        
+        <span class="code-comment">// Limpiar el input</span>
+        <span class="code-selector">$</span>(<span class="code-value">'#nuevaTarea'</span>).<span class="code-property">val</span>(<span class="code-value">''</span>);
+    });
+    
+    <span class="code-comment">// 2. Tachar tarea al hacer click (delegación)</span>
+    <span class="code-selector">$</span>(<span class="code-value">'#listaTareas'</span>).<span class="code-property">on</span>(<span class="code-value">'click'</span>, <span class="code-value">'li'</span>, <span class="code-selector">function</span>() {
+        <span class="code-selector">$</span>(<span class="code-selector">this</span>).<span class="code-property">toggleClass</span>(<span class="code-value">'completada'</span>);
+    });
+    
+    <span class="code-comment">// 3. Eliminar tarea (delegación)</span>
+    <span class="code-selector">$</span>(<span class="code-value">'#listaTareas'</span>).<span class="code-property">on</span>(<span class="code-value">'click'</span>, <span class="code-value">'.eliminar'</span>, <span class="code-selector">function</span>(<span class="code-selector">e</span>) {
+        <span class="code-comment">// Prevenir que el click llegue al &lt;li&gt; (evita tachar al eliminar)</span>
+        e.<span class="code-property">stopPropagation</span>();
+        
+        <span class="code-comment">// Eliminar el &lt;li&gt; padre</span>
+        <span class="code-selector">$</span>(<span class="code-selector">this</span>).<span class="code-property">parent</span>().<span class="code-property">remove</span>();
+    });
+    
+    <span class="code-comment">// BONUS: Agregar tarea con Enter</span>
+    <span class="code-selector">$</span>(<span class="code-value">'#nuevaTarea'</span>).<span class="code-property">on</span>(<span class="code-value">'keypress'</span>, <span class="code-selector">function</span>(<span class="code-selector">e</span>) {
+        <span class="code-selector">if</span> (e.<span class="code-property">which</span> === <span class="code-css-value">13</span>) { <span class="code-comment">// Tecla Enter</span>
+            <span class="code-selector">$</span>(<span class="code-value">'#btnAgregar'</span>).<span class="code-property">click</span>();
+        }
+    });
+    
+});</code></pre>
+                    </div>
+
+                    <h3>Conceptos aplicados:</h3>
+                    <div class="grid-3">
+                        <div class="card">
+                            <h4>✅ $(document).ready()</h4>
+                            <p>Espera a que el DOM esté listo</p>
+                        </div>
+                        <div class="card">
+                            <h4>✅ .val()</h4>
+                            <p>Obtener/establecer valor de input</p>
+                        </div>
+                        <div class="card">
+                            <h4>✅ .append()</h4>
+                            <p>Agregar elementos al DOM</p>
+                        </div>
+                        <div class="card">
+                            <h4>✅ Delegación</h4>
+                            <p>Eventos en elementos dinámicos</p>
+                        </div>
+                        <div class="card">
+                            <h4>✅ .toggleClass()</h4>
+                            <p>Alternar clases CSS</p>
+                        </div>
+                        <div class="card">
+                            <h4>✅ e.stopPropagation()</h4>
+                            <p>Evitar propagación de eventos</p>
+                        </div>
+                    </div>
+
+                    <div class="success-box">
+                        <h4>🎉 ¡Funcionalidades implementadas!</h4>
+                        <ul>
+                            <li>✅ Agregar tareas nuevas con botón o Enter</li>
+                            <li>✅ Tachar tareas al hacer click</li>
+                            <li>✅ Eliminar tareas con botón X</li>
+                            <li>✅ Validación de input vacío</li>
+                            <li>✅ Delegación de eventos (funciona con tareas
+                                dinámicas)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 18: RESUMEN Y CIERRE -->
+            <div class="slide">
+                <div class="slide-header">
+                    <div class="slide-number">Cierre</div>
+                    <h1>Resumen - AJAX y jQuery</h1>
+                </div>
+                <div class="content">
+                    <h2>Lo que aprendimos hoy</h2>
+
+                    <div class="two-columns">
+                        <div>
+                            <h3>🌐 AJAX</h3>
+                            <ul>
+                                <li>Técnica para actualizar páginas sin
+                                    recargar</li>
+                                <li>Usado en todas las aplicaciones
+                                    modernas</li>
+                                <li>JSON como formato de datos preferido</li>
+                                <li>jQuery simplifica enormemente AJAX</li>
+                            </ul>
+
+                            <h3>📚 jQuery Básico</h3>
+                            <ul>
+                                <li>Biblioteca que simplifica JavaScript</li>
+                                <li>Sintaxis:
+                                    <code>$(selector).metodo()</code></li>
+                                <li>Instalación vía CDN</li>
+                                <li>Cross-browser compatible</li>
+                            </ul>
+
+                            <h3>🎯 Selectores</h3>
+                            <ul>
+                                <li><code>$('#id')</code> - Por ID</li>
+                                <li><code>$('.clase')</code> - Por clase</li>
+                                <li><code>$('etiqueta')</code> - Por
+                                    etiqueta</li>
+                                <li>Selectores combinados y filtros</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>✏️ Manipulación DOM</h3>
+                            <ul>
+                                <li><code>.text()</code> - Texto plano</li>
+                                <li><code>.html()</code> - Contenido HTML</li>
+                                <li><code>.val()</code> - Valores de inputs</li>
+                                <li><code>.css()</code> - Estilos CSS</li>
+                                <li><code>.addClass/removeClass()</code></li>
+                                <li><code>.attr()</code> - Atributos</li>
+                            </ul>
+
+                            <h3>➕ Crear/Agregar Elementos</h3>
+                            <ul>
+                                <li><code>$('&lt;elemento&gt;')</code> -
+                                    Crear</li>
+                                <li><code>.append()</code> - Al final
+                                    (dentro)</li>
+                                <li><code>.prepend()</code> - Al inicio
+                                    (dentro)</li>
+                                <li><code>.after()</code> - Después (fuera)</li>
+                                <li><code>.before()</code> - Antes (fuera)</li>
+                            </ul>
+
+                            <h3>⚡ Eventos</h3>
+                            <ul>
+                                <li><code>.on(evento, handler)</code></li>
+                                <li><code>$(this)</code> - Elemento actual</li>
+                                <li><code>.one()</code> - Una sola vez</li>
+                                <li><code>.off()</code> - Desvincular</li>
+                                <li>Delegación para elementos dinámicos</li>
+                                <li>Namespaces para organización</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h2 style="margin-top: 40px;">Comandos esenciales que debes
+                        dominar</h2>
+                    <div class="grid-4">
+                        <div class="card">
+                            <h4>$()</h4>
+                            <p>Seleccionar</p>
+                        </div>
+                        <div class="card">
+                            <h4>.on()</h4>
+                            <p>Eventos</p>
+                        </div>
+                        <div class="card">
+                            <h4>.css()</h4>
+                            <p>Estilos</p>
+                        </div>
+                        <div class="card">
+                            <h4>.text()</h4>
+                            <p>Texto</p>
+                        </div>
+                        <div class="card">
+                            <h4>.html()</h4>
+                            <p>HTML</p>
+                        </div>
+                        <div class="card">
+                            <h4>.val()</h4>
+                            <p>Inputs</p>
+                        </div>
+                        <div class="card">
+                            <h4>.append()</h4>
+                            <p>Agregar</p>
+                        </div>
+                        <div class="card">
+                            <h4>$(this)</h4>
+                            <p>Referencia</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box" style="margin-top: 40px;">
+                        <h3 style="color: white; margin-top: 0;">📌 Para seguir
+                            practicando</h3>
+                        <ul style="color: white;">
+                            <li>Recrea el ejercicio de la lista de tareas</li>
+                            <li>Agrega más funcionalidades: contador de tareas,
+                                filtros (todas/completadas/pendientes)</li>
+                            <li>Experimenta con animaciones:
+                                <code>.fadeIn()</code>, <code>.fadeOut()</code>,
+                                <code>.slideToggle()</code></li>
+                            <li>Crea un formulario interactivo con
+                                validación</li>
+                            <li>Investiga <code>$.ajax()</code> para hacer
+                                peticiones HTTP</li>
+                        </ul>
+                    </div>
+
+                    <div class="success-box" style="margin-top: 20px;">
+                        <h3>🎯 Próximos pasos</h3>
+                        <p>Ahora que dominas jQuery básico, estás listo
+                            para:</p>
+                        <ul>
+                            <li>Aprender AJAX con jQuery (<code>$.ajax()</code>,
+                                <code>$.get()</code>,
+                                <code>$.post()</code>)</li>
+                            <li>Explorar plugins de jQuery (DataTables, Select2,
+                                etc.)</li>
+                            <li>Considerar frameworks modernos (React, Vue,
+                                Angular)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button id="prevBtn" onclick="changeSlide(-1)">← Anterior</button>
+            <button id="nextBtn" onclick="changeSlide(1)">Siguiente →</button>
+        </div>
+
+        <script src="jquery_repaso.js"></script>
+    </body>
+</html>

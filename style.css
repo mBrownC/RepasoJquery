@@ -1,0 +1,14 @@
+body{
+    background-color: rgb(177, 177, 202);
+}
+
+div{
+    border: solid 1px #000;
+}
+
+p{
+    background-color: rgb(0, 255, 42);
+}
+#principal{
+    background-color: rgb(226, 43, 43);
+}

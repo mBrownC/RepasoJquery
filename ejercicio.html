@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Actividad jQuery - Manipulación DOM</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+
+        <div class="container mt-5">
+            <ul id="milista">
+                <li>1er Elemento</li>
+                <li>2do Elemento</li>
+                <li>3er Elemento</li>
+            </ul>
+            <button id="accion" class="btn btn-success">Eliminar</button>
+            <button id="accion2" class="btn btn-info">Cambiar Color</button>
+        </div>
+        <div class="container mt-5">
+            <div class="container-fluid">
+                <div class="row mt-2" style="width: 40%;">
+                    <label for="inputprueba">Leyenda del Input</label>
+                    <input type="text" id="inputprueba"
+                        placeholder="Escriba aqui">
+                    <button id="accion3"
+                        class="btn btn-danger">Ver Info</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- jQuery CDN -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+        <!-- Bootstrap JS -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Tu JavaScript -->
+        <script src="./main.js"></script>
+    </body>
+</html>
