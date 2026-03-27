@@ -6,6 +6,7 @@ body {
     display: flex;
     align-items: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: aqua;
 }
 
 .card {
